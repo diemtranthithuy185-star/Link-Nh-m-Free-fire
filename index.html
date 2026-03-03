@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King Mod VIP</title><style>
+body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    color: gold;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow: hidden;
+    animation: bgColor 10s infinite alternate;
+}
+
+@keyframes bgColor {
+    0% { background-color: #000000; }
+    50% { background-color: #1a0000; }
+    100% { background-color: #000033; }
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    padding-top: 100px;
+}
+
+#flash {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0;
+    z-index: 9998;
+}
+
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: red;
+    z-index: 9999;
+    animation: fadeOut 3s forwards;
+    animation-delay: 2.5s;
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+h1 {
+    font-size: 45px;
+    text-shadow: 0 0 20px gold, 0 0 40px red;
+}
+
+.hacker-text {
+    color: #00ff00;
+    font-size: 20px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.online {
+    margin-top: 15px;
+    color: red;
+    font-weight: bold;
+}
+
+.btn {
+    display: inline-block;
+    margin: 15px;
+    padding: 15px 35px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.messenger {
+    background: linear-gradient(45deg, #ff0000, #ff9900);
+    color: white;
+}
+
+.zalo {
+    background: linear-gradient(45deg, #0000ff, #00ffff);
+    color: white;
+}
+
+.btn:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 25px gold;
+}
+
+.link-mua {
+    margin-top: 40px;
+    font-size: 16px;
+}
+
+.link-mua a {
+    color: yellow;
+    text-decoration: none;
+}
+</style></head><body oncontextmenu="return false"><div id="loading">🔴 ĐANG KẾT NỐI KING MOD VIP... 🔴</div>
+<div id="flash"></div><canvas id="matrix"></canvas>
+
+<audio id="nhac" loop>
+    <source src="https://files.catbox.moe/3qk8xf.mp3" type="audio/mpeg">
+</audio><audio id="welcome">
+    <source src="https://files.catbox.moe/5f6w3a.mp3" type="audio/mpeg">
+</audio><div class="container"><h1>👑 KING MOD VIP 👑</h1><div class="hacker-text" id="hacker"></div><p>Chào mừng bạn đến với cộng đồng King Mod 🔥<br>
+Nhấn vào nút bên dưới để tham gia ngay 👇</p><div class="online">🔴 Đang online: <span id="onlineCount"></span> người</div><a class="btn messenger" onclick="flashEffect()"
+href="https://m.me/j/Aba1EUCrt68m6VG9/?send_source=gc%3Acopy_invite_link"
+target="_blank"> 👉 VÀO NHÓM MESSENGER </a>
+
+<br><a class="btn zalo" onclick="flashEffect()"
+href="https://zalo.me/g/efapxn777"
+target="_blank"> 👉 VÀO NHÓM ZALO </a>
+
+<div class="link-mua">
+<p>
+Liên hệ dịch vụ 👉 
+<a href="https://www.facebook.com/share/18VMDgHEis/" target="_blank">
+Facebook của mình
+</a>
+<br><br>
+Zalo: <b>0366472732</b>
+</p>
+</div></div><script>
+// Flash effect
+function flashEffect(){
+    var flash = document.getElementById("flash");
+    flash.style.opacity = "0.8";
+    setTimeout(function(){ flash.style.opacity = "0"; }, 200);
+}
+
+// Matrix effect
+var canvas = document.getElementById("matrix");
+var ctx = canvas.getContext("2d");
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+var letters = "KINGMODVIP012345".split("");
+var fontSize = 14;
+var columns = canvas.width / fontSize;
+var drops = [];
+for (var x = 0; x < columns; x++) drops[x] = 1;
+function draw() {
+    ctx.fillStyle = "rgba(0,0,0,0.05)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = "#0F0";
+    ctx.font = fontSize + "px monospace";
+    for (var i = 0; i < drops.length; i++) {
+        var text = letters[Math.floor(Math.random()*letters.length)];
+        ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+        if (drops[i]*fontSize > canvas.height && Math.random()>0.975) drops[i]=0;
+        drops[i]++;
+    }
+}
+setInterval(draw,33);
+
+// Typing effect
+var text = "HỆ THỐNG KING MOD VIP ĐÃ KÍCH HOẠT";
+var i = 0;
+function typeEffect(){
+    if(i<text.length){
+        document.getElementById("hacker").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect,70);
+    }
+}
+typeEffect();
+
+// Fake online
+function randomOnline(){ return Math.floor(Math.random()*80)+200; }
+document.getElementById("onlineCount").innerText = randomOnline();
+setInterval(function(){ document.getElementById("onlineCount").innerText = randomOnline(); },4000);
+
+// Music
+var audio = document.getElementById("nhac");
+var welcome = document.getElementById("welcome");
+document.addEventListener("click", function(){ audio.play(); welcome.play(); }, { once:true });
+document.addEventListener("touchstart", function(){ audio.play(); welcome.play(); }, { once:true });
+</script></body>
+</html>
